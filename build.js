@@ -50,16 +50,16 @@ var App = function (_React$Component) {
 
             return React.createElement(
                 "div",
-                null,
+                { className: "container" },
                 React.createElement(
                     "form",
-                    { onSubmit: function onSubmit(event) {
+                    { className: "user_form", onSubmit: function onSubmit(event) {
                             return _this3.onSubmit(event);
                         } },
                     React.createElement(
                         "label",
                         { htmlFor: "searchText" },
-                        "Search by user name"
+                        "Search by user name:"
                     ),
                     React.createElement("input", {
                         type: "text",
@@ -67,7 +67,9 @@ var App = function (_React$Component) {
                         onChange: function onChange(event) {
                             return _this3.onChangeHandle(event);
                         },
-                        value: this.state.searchText })
+                        value: this.state.searchText,
+                        className: "user_input"
+                    })
                 ),
                 React.createElement(UsersList, { users: this.state.users })
             );
@@ -91,8 +93,12 @@ var UsersList = function (_React$Component2) {
         value: function render() {
             return React.createElement(
                 "div",
-                null,
-                this.users
+                { className: "container" },
+                React.createElement(
+                    "div",
+                    { className: "row" },
+                    this.users
+                )
             );
         }
     }, {
@@ -121,12 +127,26 @@ var User = function (_React$Component3) {
         value: function render() {
             return React.createElement(
                 "div",
-                null,
-                React.createElement("img", { src: this.props.user.avatar_url, style: { maxWidth: '100px' } }),
+                { className: "col-lg-3 col-md-4 col-xs-6" },
                 React.createElement(
-                    "a",
-                    { href: this.props.user.html_url, target: "_blank" },
-                    this.props.user.login
+                    "div",
+                    { className: "thumbnail" },
+                    React.createElement("img", { src: this.props.user.avatar_url, style: { maxWidth: '100px' } }),
+                    React.createElement(
+                        "div",
+                        { className: "caption" },
+                        React.createElement(
+                            "a",
+                            { href: this.props.user.html_url, target: "_blank" },
+                            this.props.user.login
+                        ),
+                        React.createElement(
+                            "p",
+                            null,
+                            "score: ",
+                            this.props.user.score
+                        )
+                    )
                 )
             );
         }

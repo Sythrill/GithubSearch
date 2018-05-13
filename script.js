@@ -3,7 +3,7 @@ class App extends React.Component {
         super();
         this.state = {
             searchText: '',
-            users: []
+            users: [],
         };
     }
 
@@ -22,14 +22,16 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={event => this.onSubmit(event)}>
-                    <label htmlFor="searchText">Search by user name</label>
+            <div className="container">
+                <form className="user_form" onSubmit={event => this.onSubmit(event)}>
+                    <label htmlFor="searchText">Search by user name:</label>
                     <input
                         type="text"
                         id="searchText"
                         onChange={event => this.onChangeHandle(event)}
-                        value={this.state.searchText}/>
+                        value={this.state.searchText}
+                        className="user_input"
+                    />
                 </form>
                 <UsersList users={this.state.users}/>
             </div>
@@ -44,22 +46,29 @@ class UsersList extends React.Component {
 
     render() {
         return (
-            <div>
-                {this.users}
+            <div className="container">
+                <div className="row">
+                    {this.users}
+                </div>
             </div>
+
         );
     }
 }
 
 class User extends React.Component {
     render() {
-        return (
-            <div>
-                <img src={this.props.user.avatar_url} style={{maxWidth: '100px'}}/>
-                <a href={this.props.user.html_url} target="_blank">{this.props.user.login}</a>
+        return (<div className="col-lg-3 col-md-4 col-xs-6">
+                <div className="thumbnail">
+                    <img src={this.props.user.avatar_url} style={{maxWidth: '100px'}}/>
+                    <div className="caption">
+                        <a href={this.props.user.html_url} target="_blank">{this.props.user.login}</a>
+                        <p>score: {this.props.user.score}</p>
+                    </div>
+                </div>
             </div>
         );
     }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App/>, document.getElementById('root'));
