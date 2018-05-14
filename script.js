@@ -51,7 +51,6 @@ class UsersList extends React.Component {
                     {this.users}
                 </div>
             </div>
-
         );
     }
 }
