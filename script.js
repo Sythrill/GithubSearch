@@ -59,7 +59,7 @@ class User extends React.Component {
     render() {
         return (<div className="col-lg-3 col-md-4 col-xs-6">
                 <div className="thumbnail">
-                    <img src={this.props.user.avatar_url} style={{maxWidth: '100px'}}/>
+                    <img src={this.props.user.avatar_url} alt={"Picture of user: " + this.props.user.login} style={{maxWidth: '100px'}}/>
                     <div className="caption">
                         <a href={this.props.user.html_url} target="_blank">{this.props.user.login}</a>
                         <p>score: {this.props.user.score}</p>
